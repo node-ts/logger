@@ -1,0 +1,21 @@
+{
+  "name": "@node-ts/logger-winston",
+  "version": "0.0.1",
+  "description": "A winston adapter for @node-ts/logger",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --project tsconfig.json --declaration"
+  },
+  "devDependencies": {
+    "@node-ts/code-standards": "^0.0.9",
+    "typescript": "^3.3.3",
+    "winston": "^3.2.1"
+  },
+  "dependencies": {
+    "@node-ts/logger-adapter": "^0.0.1"
+  },
+  "peerDependencies": {
+    "winston": ">= 3.2.1"
+  }
+}

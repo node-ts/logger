@@ -1,0 +1,14 @@
+{
+  "name": "@node-ts/logger-adapter",
+  "version": "0.0.1",
+  "description": "Defines a logging adapter contract between consumers and implementations",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --project tsconfig.json --declaration"
+  },
+  "devDependencies": {
+    "@node-ts/code-standards": "^0.0.9",
+    "typescript": "^3.3.3"
+  }
+}
