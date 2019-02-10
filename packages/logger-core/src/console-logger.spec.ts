@@ -6,60 +6,63 @@ describe('ConsoleLogger', () => {
   let sut: ConsoleLogger
   let jsConsole: IMock<Console>
 
+  const name = 'console-logger-spec'
   const message = 'log message'
-  const meta = {}
+  const expectedMessage = `${name}: ${message}`
+  const data = {}
 
   beforeEach(() => {
     jsConsole = Mock.ofType<Console>()
     sut = new ConsoleLogger(
+      name,
       jsConsole.object
     )
   })
 
   it('should log debug to debug', () => {
-    sut.debug(message, meta)
+    sut.debug(message, data)
     jsConsole.verify(
-      c => c.debug(message, meta),
+      c => c.debug(expectedMessage, data),
       Times.once()
     )
   })
 
   it('should log trace to trace', () => {
-    sut.trace(message, meta)
+    sut.trace(message, data)
     jsConsole.verify(
-      c => c.trace(message, meta),
+      c => c.trace(expectedMessage, data),
       Times.once()
     )
   })
 
   it('should log info to info', () => {
-    sut.info(message, meta)
+    sut.info(message, data)
     jsConsole.verify(
-      c => c.info(message, meta),
+      c => c.info(expectedMessage, data),
       Times.once()
     )
   })
 
   it('should log warn to warn', () => {
-    sut.warn(message, meta)
+    sut.warn(message, data)
     jsConsole.verify(
-      c => c.warn(message, meta),
+      c => c.warn(expectedMessage, data),
       Times.once()
     )
   })
 
   it('should log error to error', () => {
-    sut.error(message, meta)
+    sut.error(message, data)
     jsConsole.verify(
-      c => c.error(message, meta),
+      c => c.error(expectedMessage, data),
       Times.once()
     )
   })
 
   it('should log fatal to error', () => {
-    sut.fatal(message, meta)
+    sut.fatal(message, data)
     jsConsole.verify(
-      c => c.error(message, meta),
+      c => c.error(expectedMessage, data),
       Times.once()
     )
   })

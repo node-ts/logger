@@ -8,28 +8,47 @@ export class WinstonLogger implements Logger  {
   ) {
   }
 
-  debug (message: string, meta?: object): void {
-    this.winstonLogger.debug(message, meta)
+  debug (message: string, data?: object): void {
+    // tslint:disable-next-line:no-unsafe-any Node typings
+    log(this.winstonLogger.debug.bind(this), message, data)
   }
 
-  trace (message: string, meta?: object): void {
-    this.winstonLogger.verbose(message, meta)
+  trace (message: string, data?: object): void {
+    // tslint:disable-next-line:no-unsafe-any Node typings
+    log(this.winstonLogger.verbose.bind(this), message, data)
   }
 
-  info (message: string, meta?: object): void {
-    this.winstonLogger.info(message, meta)
+  info (message: string, data?: object): void {
+    // tslint:disable-next-line:no-unsafe-any Node typings
+    log(this.winstonLogger.info.bind(this), message, data)
   }
 
-  warn (message: string, meta?: object): void {
-    this.winstonLogger.warn(message, meta)
+  warn (message: string, data?: object): void {
+    // tslint:disable-next-line:no-unsafe-any Node typings
+    log(this.winstonLogger.warn.bind(this), message, data)
   }
 
-  error (message: string, meta?: object): void {
-    this.winstonLogger.error(message, meta)
+  error (message: string, data?: object): void {
+    // tslint:disable-next-line:no-unsafe-any Node typings
+    log(this.winstonLogger.error.bind(this), message, data)
   }
 
-  fatal (message: string, meta?: object): void {
-    this.winstonLogger.crit(message, meta)
+  fatal (message: string, data?: object): void {
+    // tslint:disable-next-line:no-unsafe-any Node typings
+    log(this.winstonLogger.crit.bind(this), message, data)
   }
 
+}
+
+function log (
+  // tslint:disable:no-any Node typings
+  logFn: (message: string, ...optionalParams: any[]) => void,
+  message: string,
+  data?: object
+): void {
+  if (data) {
+    logFn(message, data)
+  } else {
+    logFn(message)
+  }
 }

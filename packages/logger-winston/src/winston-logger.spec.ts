@@ -8,7 +8,7 @@ describe('winston-logger', () => {
   let winstonLogger: IMock<winston.Logger>
 
   const message = 'log message'
-  const meta = {}
+  const data = {}
 
   beforeEach(() => {
     winstonLogger = Mock.ofType<winston.Logger>()
@@ -18,49 +18,49 @@ describe('winston-logger', () => {
   })
 
   it('should log debug to debug', () => {
-    sut.debug(message, meta)
+    sut.debug(message, data)
     winstonLogger.verify(
-      w => w.debug(message, meta),
+      w => w.debug(message, data),
       Times.once()
     )
   })
 
   it('should log trace to verbose', () => {
-    sut.trace(message, meta)
+    sut.trace(message, data)
     winstonLogger.verify(
-      w => w.verbose(message, meta),
+      w => w.verbose(message, data),
       Times.once()
     )
   })
 
   it('should log info to info', () => {
-    sut.info(message, meta)
+    sut.info(message, data)
     winstonLogger.verify(
-      w => w.info(message, meta),
+      w => w.info(message, data),
       Times.once()
     )
   })
 
   it('should log warn to warn', () => {
-    sut.warn(message, meta)
+    sut.warn(message, data)
     winstonLogger.verify(
-      w => w.warn(message, meta),
+      w => w.warn(message, data),
       Times.once()
     )
   })
 
   it('should log error to error', () => {
-    sut.error(message, meta)
+    sut.error(message, data)
     winstonLogger.verify(
-      w => w.error(message, meta),
+      w => w.error(message, data),
       Times.once()
     )
   })
 
   it('should log fatal to crit', () => {
-    sut.fatal(message, meta)
+    sut.fatal(message, data)
     winstonLogger.verify(
-      w => w.crit(message, meta),
+      w => w.crit(message, data),
       Times.once()
     )
   })

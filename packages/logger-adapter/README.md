@@ -1,1 +1,0 @@
-# @node-ts/logger-adapter

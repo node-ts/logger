@@ -1,5 +1,5 @@
 {
-  "name": "@node-ts/logger-adapter",
+  "name": "@node-ts/logger-core",
   "version": "0.0.1",
   "description": "Defines a logging adapter contract between consumers and implementations",
   "main": "index.js",
@@ -13,7 +13,11 @@
     "typescript": "^3.3.3"
   },
   "dependencies": {
+    "inversify": "^5.0.1",
     "tslint": "^5.12.1",
     "typemoq": "^2.1.0"
+  },
+  "peerDependencies": {
+    "inversify": ">= 5.0.1"
   }
 }
