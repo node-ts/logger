@@ -2,6 +2,7 @@
   "extends": "./node_modules/@node-ts/code-standards/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./packages",
+    "lib": ["es2017", "dom"],
     "paths": {
       "@node-ts/*": ["./*/src"]
     }

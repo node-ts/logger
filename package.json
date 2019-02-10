@@ -10,7 +10,9 @@
     "build": "lerna run build",
     "clean": "lerna run clean && rm -r node_modules",
     "lint": "lerna run lint",
-    "publish": "lerna run package:publish"
+    "publish": "lerna run package:publish",
+    "test": "jest \"(src\\/.+\\.|/)spec\\.ts$\"",
+    "test:watch": "yarn run test --watch"
   },
   "keywords": [
     "typescript",
@@ -20,9 +22,49 @@
   ],
   "dependencies": {
     "@node-ts/code-standards": "^0.0.8",
+    "@types/jest": "^24.0.0",
+    "jest": "^24.1.0",
     "lerna": "^3.11.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^23.10.5",
     "tslib": "^1.9.3",
     "typescript": "^3.3.3"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "packages/**/*.ts",
+      "!packages/**/index.ts"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\](?!node-ts.+).+\\.ts$"
+    ],
+    "coveragePathIgnorePatterns": [
+      ".*\\.d\\.ts",
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "(src\\/.+\\.|/)spec\\.ts$",
+    "setupFilesAfterEnv": ["<rootDir>/test/setup.ts"],
+    "modulePathIgnorePatterns": [
+      "dist/"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "testEnvironment": "node",
+    "bail": true,
+    "coverageReporters": [
+      "html"
+    ],
+    "globals": {
+      "ts-jest": {
+        "babelConfig": true
+      }
+    }
   },
   "workspaces": [
     "packages/*"
