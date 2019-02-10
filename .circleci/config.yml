@@ -16,6 +16,9 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
       - run:
+        name: Install dependencies
+        command: yarn
+      - run:
           name: Bootstrap
           command: yarn run bootstrap
       - run:
