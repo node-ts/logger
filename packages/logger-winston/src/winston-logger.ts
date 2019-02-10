@@ -1,4 +1,4 @@
-import { Logger } from '@node-ts/logger-adapter'
+import { Logger } from '@node-ts/logger-core'
 import winston from 'winston'
 
 export class WinstonLogger implements Logger  {

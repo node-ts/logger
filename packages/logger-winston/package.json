@@ -2,11 +2,13 @@
   "name": "@node-ts/logger-winston",
   "version": "0.0.1",
   "description": "A winston adapter for @node-ts/logger",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.json --declaration",
-    "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts'",
+    "publish": "npm publish --access=public"
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.9",
@@ -15,12 +17,13 @@
   },
   "dependencies": {
     "@node-ts/logger-core": "^0.0.1",
+    "@types/node": "^10.12.24",
     "inversify": "^5.0.1",
     "tslint": "^5.12.1",
     "typemoq": "^2.1.0"
   },
   "peerDependencies": {
-    "winston": ">= 3.2.1",
-    "inversify": ">= 5.0.1"
+    "inversify": ">= 5.0.1",
+    "winston": ">= 3.2.1"
   }
 }
