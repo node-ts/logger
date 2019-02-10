@@ -10,7 +10,9 @@
     "build": "lerna run build",
     "clean": "lerna run clean && rm -r node_modules",
     "lint": "lerna run lint",
-    "publish": "lerna run publish",
+    "publish:packages": "npm run publish:packages:core && npm run publish:packages:winston",
+    "publish:packages:core": "npm publish packages/logger-core --access=public",
+    "publish:packages:winston": "npm publish packages/logger-winston --access=public",
     "test": "jest \"(src\\/.+\\.|/)spec\\.ts$\"",
     "test:watch": "yarn run test --watch"
   },
