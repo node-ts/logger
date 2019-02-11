@@ -1,6 +1,6 @@
 {
   "name": "@node-ts/logger-core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Defines a logging adapter contract between consumers and implementations",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.json --declaration",
     "lint": "tslint --project tsconfig.json 'src/**/*.ts'",
-    "publish": "npm publish --access=public"
+    "publish:packages": "npm publish --access=public"
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.9",

@@ -5,7 +5,7 @@ The core logger abstraction that should be referenced throughout any package or 
 By default a raw console-based logger is provided. However, switching out the logger implementation (eg with Winston, Morgan etc) can be done by loading the module of that adapter.
 
 Currently only one logger adapter is provided:
-- `@node-ts/logger-winston`
+- [@node-ts/logger-winston](https://www.npmjs.com/package/@node-ts/logger-winston)
 
 Creating a new log adapter is relatively simple; and we do welcome pull requests to this monorepo.
 
