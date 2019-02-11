@@ -1,10 +1,20 @@
 {
   "name": "@node-ts/logger-core",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Defines a logging adapter contract between consumers and implementations",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
+  "keywords": [
+    "typescript",
+    "logger",
+    "logging",
+    "logger abstraction",
+    "enterprise",
+    "logger dependency injection",
+    "logger ioc",
+    "node"
+  ],
   "scripts": {
     "build": "tsc --project tsconfig.json --declaration",
     "lint": "tslint --project tsconfig.json 'src/**/*.ts'",

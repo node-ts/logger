@@ -11,21 +11,7 @@ Creating a new log adapter is relatively simple; and we do welcome pull requests
 
 ## Using the default console adapter
 
-To use the default log adapter, reference the `LoggerModule` from your inversify container:
-
-```typescript
-// application-container.ts
-import { Container } from 'inversify'
-import { LoggerModule } from '@node-ts/logger-core'
-
-export class ApplicationContainer extends Container {
-  start (): void {
-    this.load(new LoggerModule())
-  }
-}
-```
-
-Then in any class where you need to log, inject it as part of the constructor parameters:
+The logger should be injected into your target classes through constructor parameters, eg:
 
 ```typescript
 // my-service.ts
@@ -46,6 +32,34 @@ export class MyService {
 
 }
 ```
+
+This is done by loading the `LoggerModule` and creating a binding of the `Logger` when it's injected into the service:
+
+```typescript
+// application-container.ts
+import { Container } from 'inversify'
+import { LoggerModule, LoggerFactory, LOGGER_SYMBOLS } from '@node-ts/logger-core'
+import { MyService } from './my-service'
+
+export class ApplicationContainer extends Container {
+
+  constructor () {
+    super (bind => {
+      bind(LOGGER_SYMBOLS.Logger)
+        .toDynamicValue(context => {
+          const builder = context.container.get<LoggerFactory>(LOGGER_SYMBOLS.LoggerFactory)
+          return builder.build('My Service', context)
+        })
+        .whenInjectedInto(MyService)
+    })
+  }
+
+  start (): void {
+    this.load(new LoggerModule())
+  }
+}
+```
+
 
 ## Using a different adapter
 
@@ -111,7 +125,7 @@ export class ConsoleLoggerFactory implements LoggerFactory {
 }
 ```
 
-Finally these two classes need to be exposed via your module. This is done by module rebinding, eg:
+These two classes need to be exposed via your module. This is done by module rebinding, eg:
 
 ```typescript
 // my-console-logger-module.ts
@@ -126,5 +140,30 @@ export class MyConsoleLoggerModule extends ContainerModule {
     })
   }
 }
+```
 
+## Dynamically creating named loggers
+
+Named loggers help to decorate each log message with the name of the class that produced it. Setting up a name for each logger when binding can get repetitive, so a utility function is provided to build loggers with the name of the type its being injected into.
+
+For example, when binding a simple service, the `bindLogger` function can be used:
+
+```typescript
+// application-container.ts
+import { Container } from 'inversify'
+import { LoggerModule, bindLogger } from '@node-ts/logger-core'
+import { MyService } from './my-service'
+
+export class ApplicationContainer extends Container {
+
+  constructor () {
+    super (bind => {
+      bindLogger(bind, MyService)
+    })
+  }
+
+  start (): void {
+    this.load(new LoggerModule())
+  }
+}
 ```
