@@ -25,5 +25,6 @@
   "peerDependencies": {
     "inversify": ">= 5.0.1",
     "winston": ">= 3.2.1"
-  }
+  },
+  "gitHead": "34a883673813755ae9656f946887ab640f676b62"
 }

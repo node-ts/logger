@@ -1,6 +1,6 @@
 {
   "name": "@node-ts/logger-core",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Defines a logging adapter contract between consumers and implementations",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -32,5 +32,6 @@
   },
   "peerDependencies": {
     "inversify": ">= 5.0.1"
-  }
+  },
+  "gitHead": "34a883673813755ae9656f946887ab640f676b62"
 }

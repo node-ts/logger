@@ -10,7 +10,6 @@
     "build": "lerna run build",
     "clean": "lerna run clean && rm -r node_modules",
     "lint": "lerna run lint",
-    "publish:packages": "lerna publish",
     "publish:packages:core": "npm publish packages/logger-core --access=public",
     "publish:packages:winston": "npm publish packages/logger-winston --access=public",
     "test": "jest \"(src\\/.+\\.|/)spec\\.ts$\"",
@@ -28,7 +27,7 @@
     "jest": "^24.1.0",
     "lerna": "^3.11.0",
     "reflect-metadata": "^0.1.13",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^24.0.1",
     "tslib": "^1.9.3",
     "typescript": "^3.3.3"
   },
@@ -47,8 +46,10 @@
       ".*\\.d\\.ts",
       "<rootDir>/node_modules/"
     ],
-    "testRegex": "(src\\/.+\\.|/)spec\\.ts$",
-    "setupFilesAfterEnv": ["<rootDir>/test/setup.ts"],
+    "testRegex": "(src\\/.+\\.|/)(spec|integration)\\.ts$",
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setup.ts"
+    ],
     "modulePathIgnorePatterns": [
       "dist/"
     ],
