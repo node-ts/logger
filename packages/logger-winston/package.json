@@ -7,8 +7,10 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc --project tsconfig.json --declaration",
-    "lint": "tslint --project tsconfig.json 'src/**/*.ts'",
-    "publish": "npm publish --access=public"
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.9",

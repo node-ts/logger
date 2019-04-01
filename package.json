@@ -10,8 +10,6 @@
     "build": "lerna run build",
     "clean": "lerna run clean && rm -r node_modules",
     "lint": "lerna run lint",
-    "publish:packages:core": "npm publish packages/logger-core --access=public",
-    "publish:packages:winston": "npm publish packages/logger-winston --access=public",
     "test": "yarn run test:unit && yarn run test:integration",
     "test:integration": "jest \"(src\\/.+\\.|/)winston.integration\\.ts$\"",
     "test:integration:watch": "yarn run test:integration --watch",
