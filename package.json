@@ -12,8 +12,11 @@
     "lint": "lerna run lint",
     "publish:packages:core": "npm publish packages/logger-core --access=public",
     "publish:packages:winston": "npm publish packages/logger-winston --access=public",
-    "test": "jest \"(src\\/.+\\.|/)spec\\.ts$\"",
-    "test:watch": "yarn run test --watch"
+    "test": "yarn run test:unit && yarn run test:integration",
+    "test:integration": "jest \"(src\\/.+\\.|/)winston.integration\\.ts$\"",
+    "test:integration:watch": "yarn run test:integration --watch",
+    "test:unit": "jest \"(src\\/.+\\.|/)spec\\.ts$\"",
+    "test:unit:watch": "yarn run test:unit --watch"
   },
   "keywords": [
     "typescript",

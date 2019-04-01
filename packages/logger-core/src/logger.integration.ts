@@ -12,7 +12,7 @@ import { ConsoleLogger } from './console-logger'
 class TestClass {
 
   constructor (
-    @inject(LOGGER_SYMBOLS.Logger) private readonly logger: Logger
+    @inject(LOGGER_SYMBOLS.Logger) readonly logger: Logger
   ) {
   }
 
@@ -34,8 +34,14 @@ describe('Logger', () => {
 
     container.bind(TestClass).to(TestClass)
     // tslint:disable-next-line:no-unbound-method no-unsafe-any no-invalid-this
-    bindLogger(container.bind.bind(this), TestClass)
+    bindLogger(container.bind, TestClass)
     testClass = container.get(TestClass)
+  })
+
+  describe('after binding', () => {
+    it('should inject console based loggers', () => {
+      expect(testClass.logger).toBeInstanceOf(ConsoleLogger)
+    })
   })
 
   describe('when logging to info', () => {
