@@ -24,7 +24,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@node-ts/code-standards": "^0.0.9",
+    "@node-ts/code-standards": "^0.0.10",
     "typescript": "^3.3.3"
   },
   "dependencies": {
