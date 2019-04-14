@@ -153,12 +153,48 @@ For example, when binding a simple service, the `bindLogger` function can be use
 import { Container } from 'inversify'
 import { LoggerModule, bindLogger } from '@node-ts/logger-core'
 import { MyService } from './my-service'
+import { MyOtherService } from './my-other-service'
 
 export class ApplicationContainer extends Container {
 
   constructor () {
     super (bind => {
+      bind(MyService).toSelf()
+      // Create and bind a logger named 'MyService'
       bindLogger(bind, MyService)
+
+      bind(MyOtherService).toSelf()
+      // Create and bind a logger named 'MyOtherService'
+      bindLogger(bind, MyOtherService)
+    })
+  }
+
+  start (): void {
+    this.load(new LoggerModule())
+  }
+}
+```
+
+## Automatically binding named loggers
+
+In the above example, a named logger is explicitly defined for each target it's to be injected into. To automatically bind all usages of `LOGGER_SYMBOLS.Logger` to a named logger for that target type, use `autoBindLogger()` instead:
+
+```typescript
+// application-container.ts
+import { Container } from 'inversify'
+import { LoggerModule, autoBindLogger } from '@node-ts/logger-core'
+import { MyService } from './my-service'
+import { MyOtherService } from './my-other-service'
+
+export class ApplicationContainer extends Container {
+
+  constructor () {
+    super (bind => {
+      bind(MyService).toSelf()
+      bind(MyOtherService).toSelf()
+
+      // Creates new named loggers for all targets in the container, including the above services
+      autoBindLogger(bind)
     })
   }
 
