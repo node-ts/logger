@@ -25,15 +25,14 @@
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.10",
+    "inversify": "^5.0.1",
+    "tslint": "^5.16.0",
+    "typemoq": "^2.1.0",
     "typescript": "^3.3.3"
   },
-  "dependencies": {
-    "inversify": "^5.0.1",
-    "tslint": "^5.12.1",
-    "typemoq": "^2.1.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "inversify": ">= 5.0.1"
+    "inversify": "^5.0.1"
   },
   "gitHead": "34a883673813755ae9656f946887ab640f676b62"
 }
