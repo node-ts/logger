@@ -1,0 +1,45 @@
+{
+  "name": "logger-pino",
+  "version": "0.0.1",
+  "description": "A pino adapter for @node-ts/logger",
+  "keywords": [
+    "logger",
+    "pino",
+    "node-ts"
+  ],
+  "author": "Ajith Chandran <ajithredsmoke@gmail.com>",
+  "homepage": "https://github.com/node-ts/logger#readme",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-ts/logger.git"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json --declaration",
+    "lint": "tslint --project tsconfig.json 'src/**/*.ts'"
+  },
+  "bugs": {
+    "url": "https://github.com/node-ts/logger/issues"
+  },
+  "devDependencies": {
+    "@node-ts/code-standards": "^0.0.10",
+    "@node-ts/logger-core": "^0.0.17",
+    "@types/node": "^11.13.8",
+    "@types/pino": "^5.8.8",
+    "inversify": "^5.0.1",
+    "pino": "^5.13.0",
+    "tslint": "^5.16.0",
+    "typemoq": "^2.1.0",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "autobind-decorator": "^2.4.0"
+  },
+  "peerDependencies": {
+    "@node-ts/logger-core": "^0.0.16",
+    "inversify": "^5.0.1",
+    "pino": "^5.13.0"
+  }
+}
