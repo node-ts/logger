@@ -13,6 +13,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Install
+          command: yarn
+      - run:
           name: Bootstrap
           command: yarn run bootstrap
       - run:
