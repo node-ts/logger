@@ -6,45 +6,50 @@ import autobind from 'autobind-decorator'
 export class WinstonLogger implements Logger  {
 
   constructor (
+    private readonly name: string,
     private readonly winstonLogger: winston.Logger = winston.createLogger()
   ) {
   }
 
   debug (message: string, data?: object): void {
-    log(this.winstonLogger.debug, message, data)
+    log(this.winstonLogger.debug, message, this.name, data)
   }
 
   trace (message: string, data?: object): void {
-    log(this.winstonLogger.verbose, message, data)
+    log(this.winstonLogger.verbose, message, this.name, data)
   }
 
   info (message: string, data?: object): void {
-    log(this.winstonLogger.info, message, data)
+    log(this.winstonLogger.info, message, this.name, data)
   }
 
   warn (message: string, data?: object): void {
-    log(this.winstonLogger.warn, message, data)
+    log(this.winstonLogger.warn, message, this.name, data)
   }
 
   error (message: string, data?: object): void {
-    log(this.winstonLogger.error, message, data)
+    log(this.winstonLogger.error, message, this.name, data)
   }
 
   fatal (message: string, data?: object): void {
-    log(this.winstonLogger.crit, message, data)
+    log(this.winstonLogger.crit, message, this.name, data)
   }
-
 }
 
 function log (
   // tslint:disable:no-any Node typings
   logFn: (message: string, ...optionalParams: any[]) => void,
   message: string,
+  name: string,
   data?: object
 ): void {
-  if (data) {
-    logFn(message, data)
-  } else {
-    logFn(message)
+  const meta = merge(name, data)
+  logFn(message, meta)
+}
+
+function merge (name: string, meta: object | undefined): object {
+  return {
+    name,
+    ...meta
   }
 }

@@ -11,7 +11,7 @@
     "clean": "lerna run clean && rm -r node_modules",
     "lint": "lerna run lint",
     "test": "yarn run test:unit && yarn run test:integration",
-    "test:integration": "jest \"(src\\/.+\\.|/)winston.integration\\.ts$\"",
+    "test:integration": "jest \"(src\\/.+\\.|/)integration\\.ts$\"",
     "test:integration:watch": "yarn run test:integration --watch",
     "test:unit": "jest \"(src\\/.+\\.|/)spec\\.ts$\"",
     "test:unit:watch": "yarn run test:unit --watch"
