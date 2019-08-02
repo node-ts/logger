@@ -1,5 +1,5 @@
 // tslint:disable:max-classes-per-file no-unbound-method no-unsafe-any no-any
-import { Container, decorate, injectable, inject } from 'inversify'
+import { Container, decorate, injectable, inject, interfaces } from 'inversify'
 import { WinstonModule } from './winston-module'
 import { LoggerModule, bindLogger, LOGGER_SYMBOLS, Logger } from '@node-ts/logger-core'
 
@@ -17,7 +17,8 @@ class TargetK { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {
 class TargetL { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
 class TargetM { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
 
-const classes = [
+// tslint:disable-next-line:no-any
+const classes: interfaces.Newable<any>[] = [
  TargetA,
  TargetB,
  TargetC,
