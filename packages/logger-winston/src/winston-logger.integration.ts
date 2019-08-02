@@ -3,19 +3,19 @@ import { Container, decorate, injectable, inject } from 'inversify'
 import { WinstonModule } from './winston-module'
 import { LoggerModule, bindLogger, LOGGER_SYMBOLS, Logger } from '@node-ts/logger-core'
 
-class TargetA { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetB { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetC { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetD { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetE { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetF { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetG { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetH { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetI { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetJ { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetK { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetL { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
-class TargetM { constructor (@inject(LOGGER_SYMBOLS.Logger) _: Logger) {} }
+class TargetA { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetB { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetC { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetD { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetE { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetF { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetG { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetH { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetI { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetJ { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetK { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetL { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
+class TargetM { constructor (@inject(LOGGER_SYMBOLS.Logger) private _: Logger) {} }
 
 const classes = [
  TargetA,
