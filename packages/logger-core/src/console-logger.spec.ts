@@ -27,7 +27,7 @@ describe('ConsoleLogger', () => {
     )
   })
 
-  it('should log trace to debug', () => {
+  it('should log trace to trace', () => {
     sut.trace(message, data)
     jsConsole.verify(
       c => c.trace(expectedMessage, data),

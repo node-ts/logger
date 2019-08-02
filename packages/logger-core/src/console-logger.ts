@@ -22,7 +22,7 @@ export class ConsoleLogger implements Logger {
 
   trace (message: string, data?: object): void {
     // tslint:disable-next-line:no-unsafe-any Node typings
-    log(this.jsConsole.debug.bind(this), this.name, message, data)
+    log(this.jsConsole.trace.bind(this), this.name, message, data)
   }
 
   info (message: string, data?: object): void {

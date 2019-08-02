@@ -2,7 +2,7 @@ import { injectable } from 'inversify'
 import winston, { format, transports } from 'winston'
 
 export interface WinstonConfiguration {
-  getConfiguration (loggerName: string): winston.LoggerOptions
+  getConfiguration (): winston.LoggerOptions
 }
 
 const consoleTransport = new transports.Console({
@@ -22,9 +22,8 @@ const errorStackFormat = format(info => {
 
 @injectable()
 export class DefaultWinstonConfiguration implements WinstonConfiguration {
-  getConfiguration (loggerName: string): winston.LoggerOptions {
+  getConfiguration (): winston.LoggerOptions {
     return {
-      defaultMeta: { loggerName },
       transports: [consoleTransport],
       format: format.combine(
         format.timestamp(),

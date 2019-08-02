@@ -1,12 +1,12 @@
-// tslint:disable:max-classes-per-file
-
+// tslint:disable:max-classes-per-file no-unsafe-any no-any
 import { Container, injectable, inject } from 'inversify'
 import { LoggerModule } from './logger-module'
 import { LOGGER_SYMBOLS } from './logger-symbols'
 import { Logger } from './logger'
 import { bindLogger } from './bind-logger'
-import { IMock, Times, Mock } from 'typemoq'
+import { IMock, Times, Mock, It } from 'typemoq'
 import { ConsoleLogger } from './console-logger'
+import { ConsoleLoggerFactory } from './console-logger-factory'
 
 @injectable()
 class TestClass {
@@ -30,17 +30,24 @@ describe('Logger', () => {
     container = new Container()
     container.load(new LoggerModule())
     consoleLogger = Mock.ofType<ConsoleLogger>()
-    container.bind(LOGGER_SYMBOLS.Logger).toConstantValue(consoleLogger.object)
+
+    const factory = Mock.ofType<ConsoleLoggerFactory>()
+    factory
+      .setup(f => f.build(TestClass.name, It.isAny()))
+      .returns(() => consoleLogger.object)
+    container.rebind(LOGGER_SYMBOLS.LoggerFactory).toConstantValue(factory.object)
 
     container.bind(TestClass).to(TestClass)
-    // tslint:disable-next-line:no-unbound-method no-unsafe-any no-invalid-this
-    bindLogger(container.bind, TestClass)
+    bindLogger(
+      (serviceIdentifier: any) => container.bind(serviceIdentifier),
+      TestClass
+    )
     testClass = container.get(TestClass)
   })
 
   describe('after binding', () => {
     it('should inject console based loggers', () => {
-      expect(testClass.logger).toBeInstanceOf(ConsoleLogger)
+      expect(testClass.logger).toEqual(consoleLogger.object)
     })
   })
 
