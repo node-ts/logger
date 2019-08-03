@@ -1,5 +1,5 @@
 {
-  "name": "logger-pino",
+  "name": "@node-ts/logger-pino",
   "version": "0.1.0",
   "description": "A pino adapter for @node-ts/logger",
   "keywords": [
