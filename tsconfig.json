@@ -5,6 +5,9 @@
     "lib": ["es2017", "dom"],
     "paths": {
       "@node-ts/*": ["./*/src"]
-    }
+    },
+    // Handled in linting, useful for testing
+    "allowUnreachableCode": true,
+    "noUnusedLocals": false
   }
 }
