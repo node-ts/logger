@@ -1,6 +1,6 @@
 {
   "name": "logger-pino",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A pino adapter for @node-ts/logger",
   "keywords": [
     "logger",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.10",
-    "@node-ts/logger-core": "^0.0.17",
+    "@node-ts/logger-core": "^0.1.0",
     "@types/node": "^11.13.8",
     "@types/pino": "^5.8.8",
     "inversify": "^5.0.1",
