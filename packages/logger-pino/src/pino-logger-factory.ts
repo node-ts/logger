@@ -3,7 +3,8 @@ import { interfaces, injectable } from 'inversify'
 import * as pino from 'pino'
 import { PinoConfiguration } from './pino-configuration'
 import { PINO_SYMBOLS } from './pino-symbols'
-import { PinoLogger } from './pino-logger';
+import { PinoLogger } from './pino-logger'
+
 @injectable()
 class PinoLoggerFactory implements LoggerFactory {
   build (loggerName: string, container: interfaces.Container): Logger {
