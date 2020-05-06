@@ -11,7 +11,7 @@ export class DefaultPinoConfiguration implements PinoConfiguration {
     return {
       enabled : true,
       name : loggerName,
-      level : "info",
+      level : 'info',
       prettyPrint : false
     }
   }
