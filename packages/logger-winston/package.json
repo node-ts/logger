@@ -1,6 +1,6 @@
 {
   "name": "@node-ts/logger-winston",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A winston adapter for @node-ts/logger",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@node-ts/code-standards": "^0.0.10",
-    "@node-ts/logger-core": "^0.1.0",
+    "@node-ts/logger-core": "^0.1.1",
     "@types/node": "^11.13.8",
     "inversify": "^5.0.1",
     "tslint": "^5.16.0",
